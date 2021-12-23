@@ -22,3 +22,4 @@
 ### Candidate package name
 
 * (MAG)ejs - (Mostly adequate guide)
+* minialgebra - versus sancturay's large size
