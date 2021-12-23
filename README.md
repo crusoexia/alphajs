@@ -35,3 +35,4 @@ const compose = (...visiters) => (just) => {
 
 * (MAG)ejs - (Mostly adequate guide)
 * minialgebra - versus sancturay's large size
+* logebra - (lo)dash + al(gebra)
