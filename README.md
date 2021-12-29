@@ -14,6 +14,9 @@
 * Functor
   - map (pipe)
 * Maybe
+* IO
+  - unsafePerformIO
+* Task (Folktale for asynchronous tasks)
 
 ### Utilities
 
