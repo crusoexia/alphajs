@@ -1,0 +1,27 @@
+{
+  "name": "alphajs",
+  "version": "1.0.0-alpha",
+  "description": "Algebraic Structures For JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crusoexia/alphajs.git"
+  },
+  "keywords": [
+    "\"Algebraic",
+    "Structure\""
+  ],
+  "author": "crusoexia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/crusoexia/alphajs/issues"
+  },
+  "homepage": "https://github.com/crusoexia/alphajs#readme",
+  "volta": {
+    "node": "18.7.0",
+    "npm": "8.17.0"
+  }
+}
