@@ -2,12 +2,11 @@
 
 ### Design targets
 
-* Lodash compatible
+* Lodash compatible(maybe?)
+* TypeScript
 
 ### Morphisms
 
-* Composition(lodash)
-* Identity(lodash)
 * Trace - For debug.
 * Container (Just)
   - of
