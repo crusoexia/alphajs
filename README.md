@@ -41,5 +41,6 @@ const compose = (...visiters) => (just) => {
 * zen-monad
 * zen-fp
 * zen-functor
+* chan
 * shu
 * wizard
