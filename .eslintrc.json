@@ -1,5 +1,6 @@
 {
     "extends": "@nerdscoding",
     "rules": {
+      "import/extensions": [ "error", "never" ]
     }
 }
