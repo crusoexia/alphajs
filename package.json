@@ -2,7 +2,7 @@
   "name": "alphajs",
   "version": "1.0.0-alpha",
   "description": "Algebraic Structures For JavaScript",
-  "type": "module",
+  "type": "commonjs",
   "main": "index.js",
   "scripts": {
     "inspect": "npm run check:style && npm run check:type",
