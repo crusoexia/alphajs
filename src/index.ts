@@ -1,5 +1,1 @@
-export interface Person {
-  name: string;
-}
-
-export default { name: 'john' };
+export * from './data';
