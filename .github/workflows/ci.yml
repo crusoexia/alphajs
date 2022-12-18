@@ -7,14 +7,25 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  check-code:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: checkout
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - uses: volta-cli/action@v3
-      - run: npm ci
-      - run: npm run inspect
-      - run: npm run test:report
-      - run: npm run build
+
+      - name: setup node
+        uses: volta-cli/action@v1
+
+      - name: init
+        run: npm ci
+
+      - name: inspect
+        run: npm run inspect
+
+      - name: test
+        run: npm run test:report
+
+      - name: build
+        run : npm run build
