@@ -13,6 +13,10 @@ export default class Just<a> implements Maybe<a> {
     this[valueSymbol] = value;
   }
 
+  ap<i, o>(functor: Maybe<i>): Maybe<o> {
+    return functor.map(this[valueSymbol] as (x: i) => o) as Maybe<o>;
+  }
+
   map<b>(fn: (value: a) => b) {
     return new Just(fn(this[valueSymbol]));
   }

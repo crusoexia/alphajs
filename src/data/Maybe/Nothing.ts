@@ -10,6 +10,10 @@ export default class Nothing<a> implements Maybe<a> {
     return Nothing.instance;
   }
 
+  ap<i, o>(functor: Maybe<i>): Maybe<o> {
+    return this as unknown as Nothing<o>;
+  }
+
   map<b>(fn: (value: a) => b) {
     return this as unknown as Nothing<b>;
   }
