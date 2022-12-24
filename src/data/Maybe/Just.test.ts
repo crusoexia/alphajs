@@ -1,4 +1,5 @@
 import Just from './Just';
+import Nothing from './Nothing';
 import valueSymbol from '../valueSymbol';
 
 describe('of', () => {
@@ -27,5 +28,22 @@ describe('map', () => {
     expect(Just.of(3).map((x) => 2 * x)[valueSymbol]).toEqual(6);
     expect(Just.of('foo').map((x) => `${x}bar`)[valueSymbol]).toEqual('foobar');
     expect(Just.of({ name: 'John' }).map((x) => x.name)[valueSymbol]).toEqual('John');
+  });
+});
+
+describe('ap', () => {
+  it('should apply the value of given Just to the wrapped function and return the Just result', () => {
+    expect(Just.of((x: number) => (x + 1)).ap(Just.of(9)).toString()).toEqual('Just 10 :: Maybe number');
+    expect(Just.of((x: string) => (`${x}bar`)).ap(Just.of('foo')).toString()).toEqual('Just "foobar" :: Maybe string');
+  });
+
+  it('should requires appliy twice for binary function', () => {
+    // TODO
+    // Should we by default curry the wrapped function? Or let the user decide about this?
+    expect(Just.of((a: number) => (b: number) => a + b).ap(Just.of(8)).ap(Just.of(7)).toString()).toEqual('Just 15 :: Maybe number');
+  });
+
+  it('should return Nothing when applied to Nothing', () => {
+    expect(Just.of((x: number) => (x * 2)).ap(Nothing.of()).toString()).toEqual('Nothing :: Maybe a');
   });
 });

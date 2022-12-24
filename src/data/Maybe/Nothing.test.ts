@@ -1,4 +1,5 @@
 import Nothing from './Nothing';
+import Just from './Just';
 
 describe('of', () => {
   it('should create a "Nothing"', () => {
@@ -8,6 +9,12 @@ describe('of', () => {
   it('should work when be called without the "Nothing" context', () => {
     const { of } = Nothing;
     expect(of()).toBeInstanceOf(Nothing);
+  });
+});
+
+describe('toString', () => {
+  it('should describe it\'s algebra type', () => {
+    expect(Nothing.of().toString()).toEqual('Nothing :: Maybe a');
   });
 });
 
@@ -30,8 +37,10 @@ describe('map', () => {
   });
 });
 
-describe('toString', () => {
-  it('should describe it\'s algebra type', () => {
-    expect(Nothing.of().toString()).toEqual('Nothing :: Maybe a');
+describe('ap', () => {
+  it('should do nothing but return "Nothing"', () => {
+    const v = jest.fn();
+
+    expect(Nothing.of(v).ap(Just.of('foo'))).toBeInstanceOf(Nothing);
   });
 });
