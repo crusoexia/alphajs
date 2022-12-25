@@ -14,6 +14,14 @@ export default class Nothing<a> implements Maybe<a> {
     return this as unknown as Nothing<o>;
   }
 
+  bind<i, o>(fn: (input: i) => Maybe<o>): Maybe<o> {
+    return this as unknown as Nothing<o>;
+  }
+
+  join<o>() {
+    return this as unknown as Nothing<o>;
+  }
+
   map<b>(fn: (value: a) => b) {
     return this as unknown as Nothing<b>;
   }

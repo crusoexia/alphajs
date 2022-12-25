@@ -23,7 +23,7 @@ describe('toString', () => {
   });
 });
 
-describe('map', () => {
+describe('Functor::map', () => {
   it('should map the wrapped value to the function and return a new "Just" wrap the result', () => {
     expect(Just.of(3).map((x) => 2 * x)[valueSymbol]).toEqual(6);
     expect(Just.of('foo').map((x) => `${x}bar`)[valueSymbol]).toEqual('foobar');
@@ -31,7 +31,7 @@ describe('map', () => {
   });
 });
 
-describe('ap', () => {
+describe('Applicative::ap', () => {
   it('should apply the value of given Just to the wrapped function and return the Just result', () => {
     expect(Just.of((x: number) => (x + 1)).ap(Just.of(9)).toString()).toEqual('Just 10 :: Maybe number');
     expect(Just.of((x: string) => (`${x}bar`)).ap(Just.of('foo')).toString()).toEqual('Just "foobar" :: Maybe string');
@@ -45,5 +45,29 @@ describe('ap', () => {
 
   it('should return Nothing when applied to Nothing', () => {
     expect(Just.of((x: number) => (x * 2)).ap(Nothing.of()).toString()).toEqual('Nothing :: Maybe a');
+  });
+});
+
+describe('Monad::bind', () => {
+  it('should bind its value to the fn', () => {
+    const fn = (x: number) => Just.of(x / 10);
+
+    const actual = Just.of(100).bind(fn);
+
+    expect(actual.toString()).toEqual('Just 10 :: Maybe number');
+  });
+
+  it('should return Nothing when the fn return Nothing', () => {
+    const fn = (x: number) => Nothing.of(x / 10);
+
+    const actual = Just.of(100).bind(fn);
+
+    expect(actual.toString()).toEqual('Nothing :: Maybe a');
+  });
+});
+
+describe('Monad::join', () => {
+  it('should return the internal Functor', () => {
+    expect(Just.of(Just.of('x')).join().toString()).toEqual('Just "x" :: Maybe string');
   });
 });

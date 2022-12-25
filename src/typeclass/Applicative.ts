@@ -7,7 +7,7 @@ import { Functor } from './Functor';
 * There is another method defined in Haskell Applicative: pure :: a -> fa, however due to
 * JavaScript doesn't support runtime type-inferring, this method would be useless.
 * */
-export interface Applicative<f extends Functor<unknown>> {
+export interface Applicative {
   // f (a -> b) -> f a -> f b
-  ap<a, b>(functor: f): f;
+  ap<a, b>(functor: Functor<a>): Functor<b>;
 }
