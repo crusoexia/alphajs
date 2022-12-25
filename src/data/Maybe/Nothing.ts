@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { Maybe } from './Maybe';
+import Data from '../Data';
 
-export default class Nothing<a> implements Maybe<a> {
+export default class Nothing<a> extends Data implements Maybe<a> {
   private static instance: Nothing<unknown>; // eslint-disable-line no-use-before-define
 
   static of<b>(value?: b) {
@@ -27,7 +28,7 @@ export default class Nothing<a> implements Maybe<a> {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  toString() {
+  valueOf() {
     return 'Nothing :: Maybe a';
   }
 }
