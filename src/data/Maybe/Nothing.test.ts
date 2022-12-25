@@ -18,7 +18,7 @@ describe('toString', () => {
   });
 });
 
-describe('map', () => {
+describe('Functor::map', () => {
   it('should ignore the mapping functor and return itself', () => {
     const nothing = Nothing.of();
     const fn = jest.fn();
@@ -37,10 +37,26 @@ describe('map', () => {
   });
 });
 
-describe('ap', () => {
+describe('Applicative::ap', () => {
   it('should do nothing but return "Nothing"', () => {
     const v = jest.fn();
 
     expect(Nothing.of(v).ap(Just.of('foo'))).toBeInstanceOf(Nothing);
+  });
+});
+
+describe('Monad::bind', () => {
+  it('should bind anything to Nothing', () => {
+    const fn = (x: number) => Just.of(x / 10);
+
+    const actual = Nothing.of(100).bind(fn);
+
+    expect(actual.toString()).toEqual('Nothing :: Maybe a');
+  });
+});
+
+describe('Monad::join', () => {
+  it('should return itself', () => {
+    expect(Nothing.of().join().toString()).toEqual('Nothing :: Maybe a');
   });
 });

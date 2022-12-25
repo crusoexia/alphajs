@@ -17,6 +17,14 @@ export default class Just<a> implements Maybe<a> {
     return functor.map(this[valueSymbol] as (x: i) => o) as Maybe<o>;
   }
 
+  bind<i, o>(fn: (input: i) => Maybe<o>): Maybe<o> {
+    return this.map(fn as unknown as (value: a) => o).join();
+  }
+
+  join<o>() {
+    return this[valueSymbol] as unknown as Maybe<o>;
+  }
+
   map<b>(fn: (value: a) => b) {
     return new Just(fn(this[valueSymbol]));
   }
