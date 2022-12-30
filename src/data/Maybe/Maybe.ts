@@ -2,7 +2,7 @@ import {
   Applicative,
   Functor,
   Monad,
-} from '../../typeclass';
+} from '../../typeclasses';
 
 export type Maybe<a> = Functor<a>
                         & Applicative
