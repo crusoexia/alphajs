@@ -1,4 +1,4 @@
-import { Functor } from '../typeclass';
+import { Functor } from '../typeclasses';
 
 const map = <a, b, f extends (Functor<a> | Array<a>)>(
   fn: (input: a) => b,

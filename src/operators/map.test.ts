@@ -1,5 +1,5 @@
 import map from './map';
-import { Functor } from '../typeclass';
+import { Functor } from '../typeclasses';
 import {
   Just,
   Nothing,
