@@ -1,6 +1,6 @@
 # alphajs
 
-The original purpose is trying to use TypeScript to build the Haskell building blocks. But quickly I found that they are different paradim languages, it is impossible to mimic some of Haskell features by TypeScript. But we can accept a few compromise of the paradim purity to make the library can still pragmicly easy to play with the algebraic types.
+The original purpose is trying to use TypeScript to build the Haskell building blocks. But quickly I found that they are different paradim languages, it is impossible to mimic some of Haskell features by TypeScript. But we can accept a few compromise of the paradim purity to make the library can still pragmaticly easy to play with the algebraic types.
 
 ### Design targets
 
