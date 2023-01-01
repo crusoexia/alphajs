@@ -1,6 +1,6 @@
-import { Functor } from '../typeclasses';
+import { AlgebraicData } from '../data';
 
-const map = <a, b, f extends (Functor<a> | Array<a>)>(
+const map = <a, b, f extends AlgebraicData<a>>(
   fn: (input: a) => b,
 ) => (
     functor: f,

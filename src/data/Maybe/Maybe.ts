@@ -1,9 +1,3 @@
-import {
-  Applicative,
-  Functor,
-  Monad,
-} from '../../typeclasses';
+import { RichAlgebra } from '../RichAlgebra';
 
-export type Maybe<a> = Functor<a>
-                        & Applicative
-                        & Monad<a>;
+export type Maybe<a> = RichAlgebra<a>;
