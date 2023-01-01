@@ -1,5 +1,5 @@
 import valueOf from './valueOf';
-import { Just } from './Maybe';
+import { Just } from '../Maybe';
 
 it('should return the string present value for the primitive types', () => {
   expect(valueOf(1)).toEqual('1');

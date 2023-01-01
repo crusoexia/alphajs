@@ -1,4 +1,4 @@
-import Data from './Data';
+import Data from '../Data';
 
 export default function valueOf(value: unknown) {
   switch (typeof value) {

@@ -1,6 +1,6 @@
 import Just from './Just';
 import Nothing from './Nothing';
-import valueSymbol from '../valueSymbol';
+import valueSymbol from '../utils/valueSymbol';
 
 describe('of', () => {
   it('should wrap the given value into a "Just" instance', () => {

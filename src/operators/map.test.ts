@@ -1,16 +1,16 @@
 import map from './map';
-import { Functor } from '../typeclasses';
 import {
   Just,
   Nothing,
+  RichAlgebra,
 } from '../data';
 
 describe('basic function', () => {
   it('should call the functor\'s map method with the first function argument', () => {
     const mapResult = Math.random();
     const functor = {
-      map: jest.fn(() => mapResult) as unknown as Functor<number>['map'],
-    };
+      map: jest.fn(() => mapResult) as unknown as RichAlgebra<number>['map'],
+    } as unknown as RichAlgebra<number>;
     const fn = () => null;
 
     const result = map(fn)(functor);

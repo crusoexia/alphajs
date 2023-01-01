@@ -1,6 +1,6 @@
 import { Maybe } from './Maybe';
-import valueSymbol from '../valueSymbol';
-import valueOf from '../valueOf';
+import valueSymbol from '../utils/valueSymbol';
+import valueOf from '../utils/valueOf';
 import Data from '../Data';
 
 export default class Just<a> extends Data implements Maybe<a> {
