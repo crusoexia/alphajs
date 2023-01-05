@@ -14,4 +14,7 @@ export interface RichAlgebra<a> {
 
   // Monad :: join
   join<T>(): RichAlgebra<T>;
+
+  // Showable :: show
+  show(): string;
 }
