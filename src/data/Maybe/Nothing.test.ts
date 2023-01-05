@@ -60,3 +60,9 @@ describe('Monad::join', () => {
     expect(Nothing.of().join().toString()).toEqual('Nothing :: Maybe a');
   });
 });
+
+describe('Showable::show', () => {
+  it('should present its value in stirng', () => {
+    expect(Nothing.of().show()).toEqual('Nothing :: Maybe a');
+  });
+});

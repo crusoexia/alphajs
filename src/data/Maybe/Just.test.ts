@@ -71,3 +71,18 @@ describe('Monad::join', () => {
     expect(Just.of(Just.of('x')).join().toString()).toEqual('Just "x" :: Maybe string');
   });
 });
+
+describe('Showable::show', () => {
+  it('should present its value in string', () => {
+    expect(Just.of('foo').show()).toEqual('Just "foo" :: Maybe string');
+    expect(Just.of(-1).show()).toEqual('Just -1 :: Maybe number');
+    expect(Just.of(true).show()).toEqual('Just true :: Maybe boolean');
+
+    expect(Just.of(() => null).show()).toEqual('Just () => null :: Maybe function');
+    expect(Just.of({ name: 'foo' }).show()).toEqual('Just {"name":"foo"} :: Maybe object');
+    expect(Just.of([1, 2, 3]).show()).toEqual('Just [1,2,3] :: Maybe object');
+
+    expect(Just.of(undefined).show()).toEqual('Just undefined :: Maybe undefined');
+    expect(Just.of(null).show()).toEqual('Just null :: Maybe object');
+  });
+});

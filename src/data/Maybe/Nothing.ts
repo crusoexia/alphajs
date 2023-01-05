@@ -28,7 +28,11 @@ export default class Nothing<a> extends Data implements Maybe<a> {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  valueOf() {
+  show() {
     return 'Nothing :: Maybe a';
+  }
+
+  valueOf() {
+    return this.show();
   }
 }

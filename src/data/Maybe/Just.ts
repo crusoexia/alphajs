@@ -31,7 +31,11 @@ export default class Just<a> extends Data implements Maybe<a> {
     return new Just(fn(this[valueSymbol]));
   }
 
-  valueOf() {
+  show() {
     return `Just ${valueOf(this[valueSymbol])} :: Maybe ${typeof this[valueSymbol]}`;
+  }
+
+  valueOf() {
+    return this.show();
   }
 }
