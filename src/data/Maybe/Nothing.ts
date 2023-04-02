@@ -6,16 +6,16 @@ import Data from '../Data';
 export default class Nothing<a> extends Data implements Maybe<a> {
   private static instance: Nothing<unknown>; // eslint-disable-line no-use-before-define
 
-  static of<b>(value?: b) {
+  static of<b>(_?: b) {
     Nothing.instance = Nothing.instance ?? new Nothing();
     return Nothing.instance;
   }
 
-  ap<i, o>(functor: Maybe<i>): Maybe<o> {
+  ap<i, o>(_: Maybe<i>): Maybe<o> {
     return this as unknown as Nothing<o>;
   }
 
-  bind<i, o>(fn: (input: i) => Maybe<o>): Maybe<o> {
+  bind<i, o>(_: (input: i) => Maybe<o>): Maybe<o> {
     return this as unknown as Nothing<o>;
   }
 
@@ -23,7 +23,7 @@ export default class Nothing<a> extends Data implements Maybe<a> {
     return this as unknown as Nothing<o>;
   }
 
-  map<b>(fn: (value: a) => b) {
+  map<b>(_: (value: a) => b) {
     return this as unknown as Nothing<b>;
   }
 

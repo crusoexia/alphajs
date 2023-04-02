@@ -2,15 +2,15 @@ import map from './map';
 import {
   Just,
   Nothing,
-  RichAlgebra,
+  AlgebraicData,
 } from '../data';
 
 describe('basic function', () => {
   it('should call the functor\'s map method with the first function argument', () => {
     const mapResult = Math.random();
     const functor = {
-      map: jest.fn(() => mapResult) as unknown as RichAlgebra<number>['map'],
-    } as unknown as RichAlgebra<number>;
+      map: jest.fn(() => mapResult) as unknown as AlgebraicData<number>['map'],
+    } as unknown as AlgebraicData<number>;
     const fn = () => null;
 
     const result = map(fn)(functor);
