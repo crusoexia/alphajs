@@ -1,3 +1,3 @@
-import { RichAlgebra } from '../RichAlgebra';
+import { AlgebraicData } from '../AlgebraicData';
 
-export type Maybe<a> = RichAlgebra<a>;
+export type Maybe<a> = AlgebraicData<a>;
