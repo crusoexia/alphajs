@@ -1,4 +1,4 @@
-import { valueOf } from './utils';
+import { printOf } from './utils';
 import valueSymbol from './utils/valueSymbol';
 
 export default class Container<a> {
@@ -15,6 +15,6 @@ export default class Container<a> {
   }
 
   toString(): string {
-    return `${this.#valueConstructor} ${valueOf(this[valueSymbol])} :: ${this.#typeClass} ${typeof this[valueSymbol]}`;
+    return printOf(this.#typeClass)(this.#valueConstructor)(this[valueSymbol]);
   }
 }
