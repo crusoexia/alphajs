@@ -1,18 +1,14 @@
 import { Maybe } from './Maybe';
 import valueSymbol from '../utils/valueSymbol';
-import valueOf from '../utils/valueOf';
-import Data from '../Data';
+import Container from '../Container';
 
-export default class Just<a> extends Data implements Maybe<a> {
+export default class Just<a> extends Container<a> implements Maybe<a> {
   static of<b>(value: b) {
     return new Just<b>(value);
   }
 
-  private [valueSymbol]: a;
-
   constructor(value: a) {
-    super();
-    this[valueSymbol] = value;
+    super(value, 'Just', 'Maybe');
   }
 
   ap<i, o>(functor: Maybe<i>): Maybe<o> {
@@ -32,10 +28,6 @@ export default class Just<a> extends Data implements Maybe<a> {
   }
 
   show() {
-    return `Just ${valueOf(this[valueSymbol])} :: Maybe ${typeof this[valueSymbol]}`;
-  }
-
-  valueOf() {
-    return this.show();
+    return this.toString();
   }
 }

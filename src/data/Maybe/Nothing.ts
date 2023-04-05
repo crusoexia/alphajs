@@ -1,14 +1,18 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { Maybe } from './Maybe';
-import Data from '../Data';
+import Container from '../Container';
 
-export default class Nothing<a> extends Data implements Maybe<a> {
+export default class Nothing<a> extends Container<a> implements Maybe<a> {
   private static instance: Nothing<unknown>; // eslint-disable-line no-use-before-define
 
-  static of<b>(_?: b) {
-    Nothing.instance = Nothing.instance ?? new Nothing();
+  static of<b>(value?: b) {
+    Nothing.instance = Nothing.instance ?? new Nothing(value);
     return Nothing.instance;
+  }
+
+  constructor(value: a) {
+    super(value, 'Nothing', 'Maybe');
   }
 
   ap<i, o>(_: Maybe<i>): Maybe<o> {
@@ -27,12 +31,12 @@ export default class Nothing<a> extends Data implements Maybe<a> {
     return this as unknown as Nothing<b>;
   }
 
-  // eslint-disable-next-line class-methods-use-this
   show() {
-    return 'Nothing :: Maybe a';
+    return this.toString();
   }
 
-  valueOf() {
-    return this.show();
+  // eslint-disable-next-line class-methods-use-this
+  toString() {
+    return 'Nothing :: Maybe a';
   }
 }
