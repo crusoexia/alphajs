@@ -14,7 +14,7 @@ describe('of', () => {
 
 describe('toString', () => {
   it('should describe it\'s algebra type', () => {
-    expect(Nothing.of().toString()).toEqual('Nothing :: Maybe a');
+    expect(Nothing.of().toString()).toEqual('Nothing :: Maybe<a>');
   });
 });
 
@@ -51,18 +51,18 @@ describe('Monad::bind', () => {
 
     const actual = Nothing.of(100).bind(fn);
 
-    expect(actual.toString()).toEqual('Nothing :: Maybe a');
+    expect(actual.toString()).toEqual('Nothing :: Maybe<a>');
   });
 });
 
 describe('Monad::join', () => {
   it('should return itself', () => {
-    expect(Nothing.of().join().toString()).toEqual('Nothing :: Maybe a');
+    expect(Nothing.of().join().toString()).toEqual('Nothing :: Maybe<a>');
   });
 });
 
 describe('Showable::show', () => {
   it('should present its value in stirng', () => {
-    expect(Nothing.of().show()).toEqual('Nothing :: Maybe a');
+    expect(Nothing.of().show()).toEqual('Nothing :: Maybe<a>');
   });
 });

@@ -1,5 +1,26 @@
-import { printOf } from './utils';
+import { valueOf } from './utils';
 import valueSymbol from './utils/valueSymbol';
+
+export const TYPE_PLACEHOLDER = '%t';
+
+const parsePrint = (str: string) => str.split(' :: ');
+
+const printOf = ({
+  constructor,
+  typeClass,
+} : {
+  constructor: string;
+  typeClass: string;
+}) => <T>(
+  data: T,
+) => {
+  if (data instanceof Container) {
+    const [value, type] = parsePrint(data.toString());
+    return `${constructor} (${value}) :: ${typeClass.replace(TYPE_PLACEHOLDER, type)}`;
+  }
+
+  return `${constructor} ${valueOf(data)} :: ${typeClass.replace(TYPE_PLACEHOLDER, typeof data)}`;
+};
 
 export default class Container<a> {
   #valueConstructor: string;
@@ -15,6 +36,9 @@ export default class Container<a> {
   }
 
   toString(): string {
-    return printOf(this.#typeClass)(this.#valueConstructor)(this[valueSymbol]);
+    return printOf({
+      constructor: this.#valueConstructor,
+      typeClass: this.#typeClass,
+    })(this[valueSymbol]);
   }
 }

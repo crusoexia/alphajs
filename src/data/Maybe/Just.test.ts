@@ -10,16 +10,16 @@ describe('of', () => {
 
 describe('toString', () => {
   it('should return it\'s type and value in string', () => {
-    expect(Just.of('foo').toString()).toEqual('Just "foo" :: Maybe string');
-    expect(Just.of(-1).toString()).toEqual('Just -1 :: Maybe number');
-    expect(Just.of(true).toString()).toEqual('Just true :: Maybe boolean');
+    expect(Just.of('foo').toString()).toEqual('Just "foo" :: Maybe<string>');
+    expect(Just.of(-1).toString()).toEqual('Just -1 :: Maybe<number>');
+    expect(Just.of(true).toString()).toEqual('Just true :: Maybe<boolean>');
 
-    expect(Just.of(() => null).toString()).toEqual('Just () => null :: Maybe function');
-    expect(Just.of({ name: 'foo' }).toString()).toEqual('Just {"name":"foo"} :: Maybe object');
-    expect(Just.of([1, 2, 3]).toString()).toEqual('Just [1,2,3] :: Maybe object');
+    expect(Just.of(() => null).toString()).toEqual('Just () => null :: Maybe<function>');
+    expect(Just.of({ name: 'foo' }).toString()).toEqual('Just {"name":"foo"} :: Maybe<object>');
+    expect(Just.of([1, 2, 3]).toString()).toEqual('Just [1,2,3] :: Maybe<object>');
 
-    expect(Just.of(undefined).toString()).toEqual('Just undefined :: Maybe undefined');
-    expect(Just.of(null).toString()).toEqual('Just null :: Maybe object');
+    expect(Just.of(undefined).toString()).toEqual('Just undefined :: Maybe<undefined>');
+    expect(Just.of(null).toString()).toEqual('Just null :: Maybe<object>');
   });
 });
 
@@ -33,18 +33,18 @@ describe('Functor::map', () => {
 
 describe('Applicative::ap', () => {
   it('should apply the value of given Just to the wrapped function and return the Just result', () => {
-    expect(Just.of((x: number) => (x + 1)).ap(Just.of(9)).toString()).toEqual('Just 10 :: Maybe number');
-    expect(Just.of((x: string) => (`${x}bar`)).ap(Just.of('foo')).toString()).toEqual('Just "foobar" :: Maybe string');
+    expect(Just.of((x: number) => (x + 1)).ap(Just.of(9)).toString()).toEqual('Just 10 :: Maybe<number>');
+    expect(Just.of((x: string) => (`${x}bar`)).ap(Just.of('foo')).toString()).toEqual('Just "foobar" :: Maybe<string>');
   });
 
   it('should requires appliy twice for binary function', () => {
     // TODO
     // Should we by default curry the wrapped function? Or let the user decide about this?
-    expect(Just.of((a: number) => (b: number) => a + b).ap(Just.of(8)).ap(Just.of(7)).toString()).toEqual('Just 15 :: Maybe number');
+    expect(Just.of((a: number) => (b: number) => a + b).ap(Just.of(8)).ap(Just.of(7)).toString()).toEqual('Just 15 :: Maybe<number>');
   });
 
   it('should return Nothing when applied to Nothing', () => {
-    expect(Just.of((x: number) => (x * 2)).ap(Nothing.of()).toString()).toEqual('Nothing :: Maybe a');
+    expect(Just.of((x: number) => (x * 2)).ap(Nothing.of()).toString()).toEqual('Nothing :: Maybe<a>');
   });
 });
 
@@ -54,7 +54,7 @@ describe('Monad::bind', () => {
 
     const actual = Just.of(100).bind(fn);
 
-    expect(actual.toString()).toEqual('Just 10 :: Maybe number');
+    expect(actual.toString()).toEqual('Just 10 :: Maybe<number>');
   });
 
   it('should return Nothing when the fn return Nothing', () => {
@@ -62,27 +62,27 @@ describe('Monad::bind', () => {
 
     const actual = Just.of(100).bind(fn);
 
-    expect(actual.toString()).toEqual('Nothing :: Maybe a');
+    expect(actual.toString()).toEqual('Nothing :: Maybe<a>');
   });
 });
 
 describe('Monad::join', () => {
   it('should return the internal Functor', () => {
-    expect(Just.of(Just.of('x')).join().toString()).toEqual('Just "x" :: Maybe string');
+    expect(Just.of(Just.of('x')).join().toString()).toEqual('Just "x" :: Maybe<string>');
   });
 });
 
 describe('Showable::show', () => {
   it('should present its value in string', () => {
-    expect(Just.of('foo').show()).toEqual('Just "foo" :: Maybe string');
-    expect(Just.of(-1).show()).toEqual('Just -1 :: Maybe number');
-    expect(Just.of(true).show()).toEqual('Just true :: Maybe boolean');
+    expect(Just.of('foo').show()).toEqual('Just "foo" :: Maybe<string>');
+    expect(Just.of(-1).show()).toEqual('Just -1 :: Maybe<number>');
+    expect(Just.of(true).show()).toEqual('Just true :: Maybe<boolean>');
 
-    expect(Just.of(() => null).show()).toEqual('Just () => null :: Maybe function');
-    expect(Just.of({ name: 'foo' }).show()).toEqual('Just {"name":"foo"} :: Maybe object');
-    expect(Just.of([1, 2, 3]).show()).toEqual('Just [1,2,3] :: Maybe object');
+    expect(Just.of(() => null).show()).toEqual('Just () => null :: Maybe<function>');
+    expect(Just.of({ name: 'foo' }).show()).toEqual('Just {"name":"foo"} :: Maybe<object>');
+    expect(Just.of([1, 2, 3]).show()).toEqual('Just [1,2,3] :: Maybe<object>');
 
-    expect(Just.of(undefined).show()).toEqual('Just undefined :: Maybe undefined');
-    expect(Just.of(null).show()).toEqual('Just null :: Maybe object');
+    expect(Just.of(undefined).show()).toEqual('Just undefined :: Maybe<undefined>');
+    expect(Just.of(null).show()).toEqual('Just null :: Maybe<object>');
   });
 });

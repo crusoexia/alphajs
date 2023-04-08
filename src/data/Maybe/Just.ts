@@ -1,6 +1,6 @@
 import { Maybe } from './Maybe';
 import valueSymbol from '../utils/valueSymbol';
-import Container from '../Container';
+import Container, { TYPE_PLACEHOLDER } from '../Container';
 
 export default class Just<a> extends Container<a> implements Maybe<a> {
   static of<b>(value: b) {
@@ -8,7 +8,7 @@ export default class Just<a> extends Container<a> implements Maybe<a> {
   }
 
   constructor(value: a) {
-    super(value, 'Just', 'Maybe');
+    super(value, 'Just', `Maybe<${TYPE_PLACEHOLDER}>`);
   }
 
   ap<i, o>(functor: Maybe<i>): Maybe<o> {

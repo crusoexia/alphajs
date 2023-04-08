@@ -1,5 +1,7 @@
 {
     "extends": "@nerdscoding",
     "rules": {
+      "class-methods-use-this": "off",
+      "no-use-before-define": "off"
     }
 }
