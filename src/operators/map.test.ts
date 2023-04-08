@@ -22,13 +22,13 @@ describe('basic function', () => {
 
 describe('map on Maybe', () => {
   test('Just examples', () => {
-    expect(map((x: number) => x * 2)(Just.of(3)).toString()).toEqual('Just 6 :: Maybe number');
-    expect(map((x: number) => `${x - 1}`)(Just.of(10)).toString()).toEqual('Just "9" :: Maybe string');
+    expect(map((x: number) => x * 2)(Just.of(3)).toString()).toEqual('Just 6 :: Maybe<number>');
+    expect(map((x: number) => `${x - 1}`)(Just.of(10)).toString()).toEqual('Just "9" :: Maybe<string>');
   });
 
   test('Nothing examples', () => {
     expect(map(() => {
       throw new Error('this should not happen');
-    })(Nothing.of()).toString()).toEqual('Nothing :: Maybe a');
+    })(Nothing.of()).toString()).toEqual('Nothing :: Maybe<a>');
   });
 });

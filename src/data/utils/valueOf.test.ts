@@ -14,5 +14,5 @@ it('should return the stringified object structure for objects', () => {
 });
 
 it('should return the "toString" result if the object is an instance of "Data"', () => {
-  expect(valueOf(Just.of(3))).toEqual('Just 3 :: Maybe number');
+  expect(valueOf(Just.of(3))).toEqual('Just 3 :: Maybe<number>');
 });

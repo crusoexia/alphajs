@@ -4,7 +4,7 @@ import { Maybe } from './Maybe';
 import Container from '../Container';
 
 export default class Nothing<a> extends Container<a> implements Maybe<a> {
-  private static instance: Nothing<unknown>; // eslint-disable-line no-use-before-define
+  private static instance: Nothing<unknown>;
 
   static of<b>(value?: b) {
     Nothing.instance = Nothing.instance ?? new Nothing(value);
@@ -12,7 +12,7 @@ export default class Nothing<a> extends Container<a> implements Maybe<a> {
   }
 
   constructor(value: a) {
-    super(value, 'Nothing', 'Maybe');
+    super(value, 'Nothing', 'Maybe<a>');
   }
 
   ap<i, o>(_: Maybe<i>): Maybe<o> {
@@ -35,8 +35,7 @@ export default class Nothing<a> extends Container<a> implements Maybe<a> {
     return this.toString();
   }
 
-  // eslint-disable-next-line class-methods-use-this
   toString() {
-    return 'Nothing :: Maybe a';
+    return 'Nothing :: Maybe<a>';
   }
 }

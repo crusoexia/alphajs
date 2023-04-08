@@ -1,6 +1,6 @@
 /* eslint @typescript-eslint/no-unused-vars: off */
 
-import Container from '../Container';
+import Container, { TYPE_PLACEHOLDER } from '../Container';
 import { valueSymbol } from '../utils';
 import type { Either } from './Either';
 
@@ -12,12 +12,13 @@ export default class Right<a, b> extends Container<b> implements Either<a, b> {
   }
 
   constructor(value: b) {
-    super(value, 'Right', 'Either');
+    super(value, 'Right', `Either<a, ${TYPE_PLACEHOLDER}>`);
   }
 
-  map<c>(fn: (input: b) => c): Either<a, c> {
-    // eslint-disable-next-line
-    // @ts-ignore
+  // eslint-disable-next-line
+  // @ts-ignore
+  // TODO: remove after implement Either
+  map<c>(fn: (input: b) => c) {
     return Right.of(fn(this[valueSymbol]));
   }
 }
