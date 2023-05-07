@@ -4,8 +4,6 @@ import Container, { TYPE_PLACEHOLDER } from '../Container';
 import { valueSymbol } from '../utils';
 import type { Either } from './Either';
 
-// eslint-disable-next-line
-// @ts-ignore
 export default class Left<a, b> extends Container<a> implements Either<a, b> {
   static of<c, d>(value: c) {
     return new Left<c, d>(value);
@@ -19,5 +17,13 @@ export default class Left<a, b> extends Container<a> implements Either<a, b> {
   // @ts-ignore
   map<c>(_: (input: b) => c) {
     return Left.of<a, c>(this[valueSymbol]);
+  }
+
+  bind<o>(_: (input: b) => Either<a, o>): Either<a, o> {
+    return this as unknown as Either<a, o>;
+  }
+
+  join(): Left<a, b> {
+    return this;
   }
 }
